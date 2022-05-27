@@ -9,6 +9,7 @@ class LoginViewController: UIViewController {
     let db = Firestore.firestore()
     var verifyPhone = false
     var verificationID: String? = nil
+    let user = User.user
     
     @IBOutlet weak var login_TF_phone: UITextField!
     @IBOutlet weak var login_TF_code: UITextField!
@@ -24,9 +25,36 @@ class LoginViewController: UIViewController {
     }
     
     func goToHomeViewController(){
+        
         performSegue(withIdentifier: "goToHome", sender: self)
     }
     
+    func getUserRecipesFromFirestore(){
+        let docRef = db.collection("users").document(user.getUserPhone())
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let recipesIdsList = document.data()!["recipes"]! as! [String]
+                self.user.setRecipeList(recipeIdsList: recipesIdsList)
+                self.goToHomeViewController()
+            } else {
+                print("Document does not exist")
+                //save new user
+                self.addNewUser()
+            }
+        }
+    }
+    
+    func addNewUser(){
+        print("-------> save user in firebase")
+        
+        do {
+            try db.collection("users").document(user.getUserPhone()).setData(["recipes":[]])
+            self.goToHomeViewController()
+        } catch let error {
+            print("Error writing city to Firestore: \(error)")
+        }
+    }
     
     @IBAction func Login(_ sender: UIButton) {
         if !verifyPhone{
@@ -34,6 +62,7 @@ class LoginViewController: UIViewController {
                 Auth.auth().settings?.isAppVerificationDisabledForTesting = false
                 let phoneNumber = login_TF_phone.text!
                 print("-----> phone:: \(phoneNumber)")
+                user.setUserPhone(userPhone: phoneNumber)
                 PhoneAuthProvider.provider()
                     .verifyPhoneNumber(phoneNumber, uiDelegate: nil,completion: {verificationID, error in
                         if let error = error {
@@ -59,7 +88,8 @@ class LoginViewController: UIViewController {
                         print(error)
                         return
                     }else{
-                        self.goToHomeViewController()
+                        self.getUserRecipesFromFirestore()
+                        //self.goToHomeViewController()
                         print("Authentication success with- " + (authDate?.user.phoneNumber! ?? "No phone number") )
                     }
                 })
