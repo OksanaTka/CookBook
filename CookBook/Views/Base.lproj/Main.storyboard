@@ -97,7 +97,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rQl-RJ-oN9">
-                                <rect key="frame" x="0.0" y="104.33333333333331" width="390" height="705.66666666666674"/>
+                                <rect key="frame" x="0.0" y="104.33333333333331" width="390" height="656.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="home_TV_cell" id="Ooa-Vz-lm3">
@@ -160,16 +160,18 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="topRated" id="l3R-dW-qfK"/>
+                    <navigationItem key="navigationItem" id="DCg-vy-W50"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdH-qb-gjv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1091" y="1118"/>
+            <point key="canvasLocation" x="-563" y="1093"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="OmM-9Q-VIb">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="lWE-op-Cqc" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="pzh-z1-G1t"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4EH-j3-0VS">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -341,7 +343,6 @@
                         <outlet property="addrecipe_TE_instructions" destination="4JG-bL-U6k" id="a7M-oH-6f4"/>
                         <outlet property="addrecipe_TE_name" destination="iAb-4o-i8G" id="8Wj-7y-8yk"/>
                         <outlet property="addrecipe_TE_save" destination="Kdz-90-56R" id="5JU-Cp-chA"/>
-                        <segue destination="KjE-oG-9qX" kind="presentation" identifier="goToHome" id="ay6-5N-XTb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HXm-uk-wa0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -381,9 +382,6 @@
             <point key="canvasLocation" x="1502" y="1094"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="ay6-5N-XTb"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="Like" width="512" height="512"/>
         <image name="plus" catalog="system" width="128" height="113"/>

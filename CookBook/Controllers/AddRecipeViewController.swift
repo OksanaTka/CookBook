@@ -47,12 +47,12 @@ class AddRecipeViewController: UIViewController {
     
     func uploadImageToStorage(){
         // File located on disk
-        let localFile = addRecipeBrain.getRecipe().image!
+        let localFile = addRecipeBrain.getImagePathUserPhone()
         let storageRef = storage.reference()
         // Create a reference to the file you want to upload
         let userPhone = user.getUserPhone()
         let recipeName = addRecipeBrain.getRecipe().name
-        let riversRef = storageRef.child("\(userPhone)/\(recipeName!).jpg")
+        let riversRef = storageRef.child(addRecipeBrain.getRecipe().imageName!)
         
         // Upload the file to the path "images/rivers.jpg"
         let uploadTask = riversRef.putFile(from: localFile, metadata: nil) { metadata, error in
@@ -102,14 +102,24 @@ class AddRecipeViewController: UIViewController {
         }
         
         if saveRercipe{
+            let imageName = "\(user.getUserPhone())/\(addRecipeBrain.getRecipe().name!).jpg"
+            self.addRecipeBrain.setUserRecipeImage(image: imageName)
             addRecipeBrain.setUserRecipeUserId(userId: user.getUserPhone())
             saveRecipeInFirestore()
             uploadImageToStorage()
-            performSegue(withIdentifier: "goToHome", sender: self)
+            clearView()
         }
         
     }
-    
+    func clearView(){
+        addrecipe_TE_name.text = nil
+        addrecipe_TE_description.text = nil
+        addrecipe_TE_ingrediencies.text = nil
+        addrecipe_TE_instructions.text = nil
+        
+        addrecipe_BTN_addimage.isHidden = false
+        addrecipe_IMG_image.isHidden = true
+    }
     func saveRecipeInFirestore(){
         print("-------> save in firebase")
         //generate uid
@@ -176,7 +186,7 @@ extension AddRecipeViewController: UIImagePickerControllerDelegate,UINavigationC
             self.addrecipe_BTN_addimage.isHidden = true
             self.addrecipe_IMG_image.isHidden = false
             self.addrecipe_IMG_image.imageFrom(url: imageUrl)
-            self.addRecipeBrain.setUserRecipeImage(image: imageUrl)
+            self.addRecipeBrain.setImagePathUserPhone(path: imageUrl)
             print("--------------->uploaded")
             
         }

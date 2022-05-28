@@ -11,7 +11,7 @@ struct Recipe : Codable{
     var name: String?
     var like: Bool?
     var numberOfLikes: Int?
-    var image: URL?
+    var imageName: String?
     var instructions: String?
     var ingrediencies: String?
     var description: String?

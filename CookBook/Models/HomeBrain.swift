@@ -7,8 +7,8 @@
 
 import Foundation
 struct HomeBrain {
-    var recipe:[Recipe] = []
     var userRecipe = Recipe()
+    var recipeData = RecipeData.recipeData
     
     
    mutating func setUserRecipeName(name: String){
@@ -17,8 +17,13 @@ struct HomeBrain {
     mutating func setUserRecipeLike(like: Bool){
         self.userRecipe.like = like
     }
-    mutating func setUserRecipeImage(image: URL){
-        self.userRecipe.image = image
+    mutating func setUserRecipeImage(image: String){
+        self.userRecipe.imageName = image
+    }
+    
+    mutating func addRecipeToList(newRecipe: Recipe){
+        self.recipeData.addRecipeToList(newRecipe: newRecipe)
+        
     }
 
     
