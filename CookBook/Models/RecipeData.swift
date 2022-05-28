@@ -8,18 +8,19 @@
 import Foundation
 class RecipeData {
     static let recipeData = RecipeData()
-    private var recipesList: [Recipe] = []
+    private var recipesMap: [String:Recipe] = [:]
     
     
     var initRecipe: Bool?
     //Initializer access level change now
     private init(){}
     
-    func addRecipeToList(newRecipe: Recipe){
-        recipesList.append(newRecipe)
+    func addRecipeToMap(_ recipeId: String,_ newRecipe: Recipe){
+       // recipesMap.app(newRecipe)
+        recipesMap[recipeId] = newRecipe
     }
     
-    func getRecipeList() -> [Recipe]{
-        return recipesList
+    func getRecipeMap() -> [String:Recipe]{
+        return recipesMap
     }
 }

@@ -8,15 +8,24 @@
 import Foundation
 struct AddRecipeBrain {
     var newRecipe = Recipe()
-    var ImagePathUserPhone: URL?
+    var ImagePathUserPhone: URL?    
+    
     
     mutating func setImagePathUserPhone(path: URL){
          self.ImagePathUserPhone = path
      }
     
-    mutating func getImagePathUserPhone() -> URL{
+     func getImagePathUserPhone() -> URL{
          return ImagePathUserPhone!
      }
+    
+    mutating func setImageURL(imageURL: URL) {
+        return newRecipe.imageURL = imageURL
+    }
+    
+    func getImageURL() -> URL{
+        return newRecipe.imageURL!
+    }
     
    mutating func setUserRecipeName(name: String){
         self.newRecipe.name = name

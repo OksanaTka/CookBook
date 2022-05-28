@@ -12,54 +12,64 @@ import FirebaseStorage
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var home_TV_table: UITableView!
+    
     let db = Firestore.firestore()
+    var storage = Storage.storage()
     var homeBrain = HomeBrain()
     var recipeData = RecipeData.recipeData
+    let user = User.user
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getAllRecipies()
-        // Do any additional setup after loading the view.
+
+        print("--------->TABLE VIEW???? in func")
+        home_TV_table.dataSource = self
+        home_TV_table.register(UINib(nibName: "RecipeCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
     }
     
     
-    func getAllRecipies(){
-       // let docRef = db.collection("recipes").document("AS8C04dLV3SdEP47L7Oc")
-        
 
-//        docRef.getDocument(as: Recipe.self) { result in
-//            // The Result type encapsulates deserialization errors or
-//            // successful deserialization, and can be handled as follows:
-//            //
-//            //      Result
-//            //        /\
-//            //   Error  City
-//            switch result {
-//            case .success(let city):
-//                // A `City` value was successfully initialized from the DocumentSnapshot.
-//                print("City: \(city)")
-//            case .failure(let error):
-//                // A `City` value could not be initialized from the DocumentSnapshot.
-//                print("Error decoding city: \(error)")
-//            }
-//        }
-        db.collection("recipes").getDocuments() { (querySnapshot, err) in
-
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    do{
-                    print("\(document.documentID) => \(try document.data(as: Recipe.self))   )")
-                        let newRecipe = try document.data(as: Recipe.self)
-                        self.homeBrain.addRecipeToList(newRecipe: newRecipe)
-                    }
-                    catch var error{
-                        print(error)
-                    }
-                }
-            }
-        }
-    }
 
 }
+
+
+extension HomeViewController : UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("--------->count \(homeBrain.getRecipeMap().count)")
+        return homeBrain.getRecipeMapSize()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = home_TV_table.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! RecipeCell
+        
+        let index = Array(homeBrain.getRecipeMap().keys)[indexPath.row]
+        let recipe = homeBrain.getRecipeMap()[index]!
+        // Create a reference to the file you want to download
+        print("--------->TABLE VIEW")
+        cell.recipe_IMG_image.imageFrom(url: recipe.imageURL!)
+        cell.recipe_LBL_name.text = "\(recipe.name!)"
+        return cell
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        home_TV_table.reloadData()
+    }
+    
+}
+// display image by url
+//extension UIImageView{
+//    func imageFrom(url:URL){
+//        DispatchQueue.global().async { [weak self] in
+//            if let data = try? Data(contentsOf: url){
+//                if let image = UIImage(data:data){
+//                    DispatchQueue.main.async{
+//                        self?.image = image
+//
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}

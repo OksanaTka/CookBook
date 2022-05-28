@@ -35,11 +35,11 @@ class AddRecipeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Get a non-default Cloud Storage bucket
-       // storage = Storage.storage(url:"gs://cookbook-e4cd0.appspot.com")
+        // storage = Storage.storage(url:"gs://cookbook-e4cd0.appspot.com")
         
         // Get a non-default Cloud Storage bucket
         storage = Storage.storage(url:"gs://cookbook-e4cd0.appspot.com")
-            
+        
         // Do any additional setup after loading the view.
     }
     
@@ -56,21 +56,25 @@ class AddRecipeViewController: UIViewController {
         
         // Upload the file to the path "images/rivers.jpg"
         let uploadTask = riversRef.putFile(from: localFile, metadata: nil) { metadata, error in
-          guard let metadata = metadata else {
-            // Uh-oh, an error occurred!
-            return
-          }
-          // Metadata contains file metadata such as size, content-type.
-          let size = metadata.size
-          // You can also access to download URL after upload.
-          riversRef.downloadURL { (url, error) in
-            guard let downloadURL = url else {
-              // Uh-oh, an error occurred!
-              return
+            guard let metadata = metadata else {
+                // Uh-oh, an error occurred!
+                return
             }
-          }
+            // Metadata contains file metadata such as size, content-type.
+            let size = metadata.size
+            // You can also access to download URL after upload.
+            riversRef.downloadURL { (url, error) in
+                self.addRecipeBrain.setImageURL(imageURL: url!)
+                print("----> image URL ADD")
+                self.saveRecipeInFirestore()
+                self.clearView()
+                guard let downloadURL = url else {
+                    // Uh-oh, an error occurred!
+                    return
+                }
+            }
         }
-            
+        
     }
     
     @IBAction func SaveRecipe(_ sender: UIButton) {
@@ -105,9 +109,9 @@ class AddRecipeViewController: UIViewController {
             let imageName = "\(user.getUserPhone())/\(addRecipeBrain.getRecipe().name!).jpg"
             self.addRecipeBrain.setUserRecipeImage(image: imageName)
             addRecipeBrain.setUserRecipeUserId(userId: user.getUserPhone())
-            saveRecipeInFirestore()
+            
             uploadImageToStorage()
-            clearView()
+            
         }
         
     }
@@ -125,10 +129,13 @@ class AddRecipeViewController: UIViewController {
         //generate uid
         let ref = db.collection("recipes")
         let recipeId = ref.document().documentID
+        let newRecipe = addRecipeBrain.getRecipe()
         // add recipe to user recipies list
         do {
-            try db.collection("recipes").document(recipeId).setData(from: addRecipeBrain.getRecipe())
+            try db.collection("recipes").document(recipeId).setData(from: newRecipe)
+            let recipeData = RecipeData.recipeData
             user.addRecipeIdToList(recipeId: recipeId)
+            recipeData.addRecipeToMap(recipeId, newRecipe)
             updateUserRecipeListFirestore()
         } catch let error {
             print("Error writing city to Firestore: \(error)")
@@ -137,30 +144,30 @@ class AddRecipeViewController: UIViewController {
     func updateUserRecipeListFirestore(){
         let washingtonRef = db.collection("users").document(user.getUserPhone())
         
-    
+        
         // Set the "capital" field of the city 'DC'
         washingtonRef.updateData([
             "recipes": user.getRecipeList()
         ]) { err in
             if let err = err {
-               // self.addNewUser()
+                // self.addNewUser()
                 print("Error updating document: \(err)")
             } else {
                 print("Document successfully updated")
             }
         }
-
+        
     }
     
-//    func addNewUser(){
-//        print("-------> save user in firebase")
-//
-//        do {
-//            try db.collection("users").document(user.getUserPhone()).setData(["recipes":user.getRecipeList()])
-//        } catch let error {
-//            print("Error writing city to Firestore: \(error)")
-//        }
-//    }
+    //    func addNewUser(){
+    //        print("-------> save user in firebase")
+    //
+    //        do {
+    //            try db.collection("users").document(user.getUserPhone()).setData(["recipes":user.getRecipeList()])
+    //        } catch let error {
+    //            print("Error writing city to Firestore: \(error)")
+    //        }
+    //    }
     
     @IBAction func UploadPicture(_ sender: UIButton) {
         showImagePickerController()
@@ -192,6 +199,22 @@ extension AddRecipeViewController: UIImagePickerControllerDelegate,UINavigationC
         }
         dismiss(animated: true,completion: nil)
         
+    }
+    
+    func downloadImageURLFirestore(imageName: String){
+        let storageRef = storage.reference()
+        let starsRef = storageRef.child("\(imageName)")
+        // Fetch the download URL
+        starsRef.downloadURL { url, error in
+            if let error = error {
+                // Handle any errors
+                print("--------->Storage ERROR: \(error)")
+            } else {
+                // Get the download URL for 'images/stars.jpg'
+                print("----> image URL: \(url!)")
+                self.addRecipeBrain.setImageURL(imageURL: url!)
+            }
+        }
     }
 }
 

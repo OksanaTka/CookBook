@@ -10,6 +10,7 @@ class LoginViewController: UIViewController {
     var verifyPhone = false
     var verificationID: String? = nil
     let user = User.user
+    let recipeDate = RecipeData.recipeData
     
     @IBOutlet weak var login_TF_phone: UITextField!
     @IBOutlet weak var login_TF_code: UITextField!
@@ -36,7 +37,9 @@ class LoginViewController: UIViewController {
             if let document = document, document.exists {
                 let recipesIdsList = document.data()!["recipes"]! as! [String]
                 self.user.setRecipeList(recipeIdsList: recipesIdsList)
-                self.goToHomeViewController()
+                self.getAllRecipies()
+                
+                
             } else {
                 print("Document does not exist")
                 //save new user
@@ -45,12 +48,33 @@ class LoginViewController: UIViewController {
         }
     }
     
+    func getAllRecipies(){
+
+        db.collection("recipes").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    do{
+                   // print("\(document.documentID) => \(try document.data(as: Recipe.self))   )")
+                        let recipeId = document.documentID as String
+                        let newRecipe = try document.data(as: Recipe.self)
+                        self.recipeDate.addRecipeToMap(recipeId, newRecipe)
+                    }
+                    catch let error{
+                        print(error)
+                    }
+                }
+                self.goToHomeViewController()
+            }
+        }
+    }
+    
     func addNewUser(){
-        print("-------> save user in firebase")
-        
         do {
             try db.collection("users").document(user.getUserPhone()).setData(["recipes":[]])
-            self.goToHomeViewController()
+            self.getAllRecipies()
+            
         } catch let error {
             print("Error writing city to Firestore: \(error)")
         }
@@ -61,7 +85,6 @@ class LoginViewController: UIViewController {
             if !login_TF_phone.text!.isEmpty{
                 Auth.auth().settings?.isAppVerificationDisabledForTesting = false
                 let phoneNumber = login_TF_phone.text!
-                print("-----> phone:: \(phoneNumber)")
                 user.setUserPhone(userPhone: phoneNumber)
                 PhoneAuthProvider.provider()
                     .verifyPhoneNumber(phoneNumber, uiDelegate: nil,completion: {verificationID, error in

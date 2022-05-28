@@ -21,11 +21,18 @@ struct HomeBrain {
         self.userRecipe.imageName = image
     }
     
-    mutating func addRecipeToList(newRecipe: Recipe){
-        self.recipeData.addRecipeToList(newRecipe: newRecipe)
+    mutating func addRecipeToMap(recipeId: String,newRecipe: Recipe){
+        self.recipeData.addRecipeToMap(recipeId, newRecipe)
         
     }
-
+    
+    func getRecipeMap() -> [String:Recipe]{
+        return recipeData.getRecipeMap()
+    }
+    
+    func getRecipeMapSize() -> Int{
+        return recipeData.getRecipeMap().count
+    }
     
     
 }
