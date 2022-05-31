@@ -26,6 +26,7 @@
 		8A66FD6B284288D300596D66 /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A66FD69284288D300596D66 /* RecipeCell.swift */; };
 		8A66FD6C284288D300596D66 /* RecipeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A66FD6A284288D300596D66 /* RecipeCell.xib */; };
 		8AB8FD3028411B5F005CA76B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8FD2F28411B5E005CA76B /* User.swift */; };
+		8AC4C8A8284695F7007BBAD8 /* RecipeDetailsBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC4C8A7284695F7007BBAD8 /* RecipeDetailsBrain.swift */; };
 		DB7CF7E9BA5307CEB45C5382 /* Pods_CookBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C82ADF8A15BFEF4E326D63 /* Pods_CookBook.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		8A66FD69284288D300596D66 /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		8A66FD6A284288D300596D66 /* RecipeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeCell.xib; sourceTree = "<group>"; };
 		8AB8FD2F28411B5E005CA76B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8AC4C8A7284695F7007BBAD8 /* RecipeDetailsBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsBrain.swift; sourceTree = "<group>"; };
 		E17199A0DF8AF0776A17CB82 /* Pods-CookBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBook.debug.xcconfig"; path = "Target Support Files/Pods-CookBook/Pods-CookBook.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +144,7 @@
 				8A39B6F42840024000E53FF2 /* AddRecipeBrain.swift */,
 				8AB8FD2F28411B5E005CA76B /* User.swift */,
 				8A5DA5C3284222600070409E /* RecipeData.swift */,
+				8AC4C8A7284695F7007BBAD8 /* RecipeDetailsBrain.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				8A5DA5C4284222600070409E /* RecipeData.swift in Sources */,
 				8A39B6ED283FE97800E53FF2 /* HomeBrain.swift in Sources */,
 				8A39B6E7283FB0A200E53FF2 /* AuthManager.swift in Sources */,
+				8AC4C8A8284695F7007BBAD8 /* RecipeDetailsBrain.swift in Sources */,
 				8A39B6EB283FE91B00E53FF2 /* Recipe.swift in Sources */,
 				8A39B6CE283F8A8200E53FF2 /* AppDelegate.swift in Sources */,
 				8A39B6D0283F8A8200E53FF2 /* SceneDelegate.swift in Sources */,

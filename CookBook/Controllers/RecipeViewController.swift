@@ -8,22 +8,41 @@
 import UIKit
 
 class RecipeViewController: UIViewController {
+    
+    var recipe: Recipe?
+    var recipeData = RecipeData.recipeData
+    var recipeIndex: Int?
+    var recipeDetailsBrain = RecipeDetailsBrain()
 
+    @IBOutlet weak var details_IMG_image: UIImageView!
+    @IBOutlet weak var details_LBL_instructions: UILabel!
+    @IBOutlet weak var details_LBL_ingrediencies: UILabel!
+    @IBOutlet weak var details_LBL_description: UILabel!
+    
+    @IBOutlet weak var details_LBL_name: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let index = Array(recipeData.getRecipeMap().keys)[recipeIndex ?? 0]
+        recipe = recipeData.getRecipeMap()[index]!
+        
+        
+        initView()
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func initView(){
+        details_IMG_image.imageFrom(url: (recipe?.imageURL)!)
+        details_LBL_name.text = recipe?.name!
+        details_LBL_instructions.text = recipe?.instructions
+        details_LBL_ingrediencies.text = recipe?.ingrediencies
+        details_LBL_description.text = recipe?.description
+        
     }
-    */
 
+    @IBAction func NavigateBack(_ sender: UIButton) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }

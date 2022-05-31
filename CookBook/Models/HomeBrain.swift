@@ -10,12 +10,22 @@ struct HomeBrain {
     var userRecipe = Recipe()
     var recipeData = RecipeData.recipeData
     
+    var currentRecipeIndex: Int?
+    
+    
+    mutating func setCurrentRecipeIndex(index: Int){
+        self.currentRecipeIndex = index
+    }
+    
+    func getCurrentRecipeIndex() -> Int?{
+        return currentRecipeIndex
+    }
     
    mutating func setUserRecipeName(name: String){
         self.userRecipe.name = name
     }
     mutating func setUserRecipeLike(like: Bool){
-        self.userRecipe.like = like
+        self.userRecipe.liked = like
     }
     mutating func setUserRecipeImage(image: String){
         self.userRecipe.imageName = image

@@ -7,21 +7,43 @@
 
 import UIKit
 
+protocol MyTableViewCellDelegate: AnyObject{
+    func didTapButton(index: Int)
+}
+
 class RecipeCell: UITableViewCell {
+    
+    weak var delegate: MyTableViewCellDelegate?
 
     @IBOutlet weak var recipe_LBL_likes: UILabel!
-    @IBOutlet weak var recipe_IMG_like: UIImageView!
     @IBOutlet weak var recipe_LBL_name: UILabel!
     @IBOutlet weak var recipe_IMG_image: UIImageView!
+    
+    @IBOutlet weak var recipe_IMG_like: UIImageView!
+    
+    @IBOutlet weak var recipe_BTN_detailes: UIButton!
+    var recipe:Recipe?
+    var index: String?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        recipe_IMG_image.layer.cornerRadius = recipe_IMG_image.frame.size.height / 5
+        
+    }
+    
+    
+    @IBAction func ShowRecipeDetails(_ sender: UIButton) {
+        let indexBTN = sender.tag
+        delegate?.didTapButton(index: indexBTN)
     }
 
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
+    
+    
     
 }

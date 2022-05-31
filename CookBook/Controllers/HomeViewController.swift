@@ -29,9 +29,15 @@ class HomeViewController: UIViewController {
     }
     
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "openRecipe"{
+            let recipeDetailsVC = segue.destination as! RecipeViewController
+           // recipeDetailsVC.recipe = homeBrain.get
+        }
+    }
 
 }
+
 
 
 extension HomeViewController : UITableViewDataSource{
@@ -40,17 +46,38 @@ extension HomeViewController : UITableViewDataSource{
         return homeBrain.getRecipeMapSize()
     }
     
+
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = home_TV_table.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! RecipeCell
         
         let index = Array(homeBrain.getRecipeMap().keys)[indexPath.row]
         let recipe = homeBrain.getRecipeMap()[index]!
-        // Create a reference to the file you want to download
-        print("--------->TABLE VIEW")
+        
+        cell.recipe = recipe
+        cell.index = index
+        
+        // init cell
         cell.recipe_IMG_image.imageFrom(url: recipe.imageURL!)
         cell.recipe_LBL_name.text = "\(recipe.name!)"
+        cell.recipe_LBL_likes.text = "\(recipe.numberOfLikes ?? 0)"
+        cell.recipe_BTN_detailes.tag = indexPath.row
+        
+        if(recipe.liked ?? false){
+            print("---> true")
+            cell.recipe_IMG_like.image = UIImage(named: "Like")
+        }
+        else{
+            print("---> false")
+            cell.recipe_IMG_like.image = UIImage(named: "Unlike")
+        }
+        
+        cell.delegate = self
+        
         return cell
     }
+    
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -58,18 +85,11 @@ extension HomeViewController : UITableViewDataSource{
     }
     
 }
-// display image by url
-//extension UIImageView{
-//    func imageFrom(url:URL){
-//        DispatchQueue.global().async { [weak self] in
-//            if let data = try? Data(contentsOf: url){
-//                if let image = UIImage(data:data){
-//                    DispatchQueue.main.async{
-//                        self?.image = image
-//
-//                    }
-//                }
-//            }
-//        }
-//    }
-//}
+
+extension HomeViewController: MyTableViewCellDelegate{
+    
+    func didTapButton(index: Int) {
+        homeBrain.setCurrentRecipeIndex(index: index)
+        self.performSegue(withIdentifier: "openRecipe", sender: self)
+    }
+}

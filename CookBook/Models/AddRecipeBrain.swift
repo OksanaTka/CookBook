@@ -31,7 +31,7 @@ struct AddRecipeBrain {
         self.newRecipe.name = name
     }
     mutating func setUserRecipeLike(like: Bool){
-        self.newRecipe.like = like
+        self.newRecipe.liked = like
     }
     mutating func setUserRecipeImage(image: String){
         self.newRecipe.imageName = image
