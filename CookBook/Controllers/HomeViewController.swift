@@ -32,7 +32,7 @@ class HomeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openRecipe"{
             let recipeDetailsVC = segue.destination as! RecipeViewController
-           // recipeDetailsVC.recipe = homeBrain.get
+            recipeDetailsVC.recipeIndex = homeBrain.getCurrentRecipeIndex()
         }
     }
 

@@ -345,18 +345,20 @@
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="vqg-Eo-msm">
                                         <rect key="frame" x="0.0" y="116.33333333333331" width="390" height="116.33333333333331"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Recipe Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jh4-E9-D2s">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hi" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ahf-7M-fsm">
                                                 <rect key="frame" x="60" y="5" width="270" height="111.33333333333333"/>
-                                                <nil key="textColor"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="jh4-E9-D2s" firstAttribute="top" secondItem="vqg-Eo-msm" secondAttribute="top" constant="5" id="0O1-be-PJp"/>
-                                            <constraint firstAttribute="trailing" secondItem="jh4-E9-D2s" secondAttribute="trailing" constant="60" id="GMC-SX-6qm"/>
-                                            <constraint firstItem="jh4-E9-D2s" firstAttribute="leading" secondItem="vqg-Eo-msm" secondAttribute="leading" constant="60" id="dEN-Dd-n1O"/>
-                                            <constraint firstAttribute="bottom" secondItem="jh4-E9-D2s" secondAttribute="bottom" id="rlb-M1-v5n"/>
+                                            <constraint firstItem="ahf-7M-fsm" firstAttribute="leading" secondItem="vqg-Eo-msm" secondAttribute="leading" constant="60" id="22k-T5-9Au"/>
+                                            <constraint firstItem="ahf-7M-fsm" firstAttribute="top" secondItem="vqg-Eo-msm" secondAttribute="top" constant="5" id="Kxi-Jy-7Li"/>
+                                            <constraint firstAttribute="trailing" secondItem="ahf-7M-fsm" secondAttribute="trailing" constant="60" id="aUT-WP-fYn"/>
+                                            <constraint firstAttribute="bottom" secondItem="ahf-7M-fsm" secondAttribute="bottom" id="fzd-Ql-e5a"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ks8-b1-sOO">
@@ -436,7 +438,7 @@
                     <connections>
                         <outlet property="addrecipe_BTN_addimage" destination="8sm-sb-3vP" id="Syx-j7-W8W"/>
                         <outlet property="addrecipe_IMG_image" destination="Oi2-Ej-IP6" id="EXW-gI-H2v"/>
-                        <outlet property="addrecipe_TE_description" destination="jh4-E9-D2s" id="LD1-Oi-BJn"/>
+                        <outlet property="addrecipe_LBL_edit" destination="ahf-7M-fsm" id="ans-qy-ePa"/>
                         <outlet property="addrecipe_TE_ingrediencies" destination="i98-gf-YDJ" id="OFY-Zs-VZD"/>
                         <outlet property="addrecipe_TE_instructions" destination="4JG-bL-U6k" id="a7M-oH-6f4"/>
                         <outlet property="addrecipe_TE_name" destination="iAb-4o-i8G" id="8Wj-7y-8yk"/>
@@ -484,6 +486,9 @@
         <image name="back" width="52.501998901367188" height="52.501998901367188"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="recipe-book" width="512" height="512"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

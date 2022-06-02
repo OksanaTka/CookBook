@@ -15,6 +15,7 @@ import FirebaseStorage
 
 class AddRecipeViewController: UIViewController {
     
+    @IBOutlet weak var addrecipe_LBL_edit: UITextView!
     @IBOutlet weak var addrecipe_BTN_addimage: UIButton!
     
     @IBOutlet weak var addrecipe_TE_name: UITextField!
@@ -34,6 +35,7 @@ class AddRecipeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Get a non-default Cloud Storage bucket
         // storage = Storage.storage(url:"gs://cookbook-e4cd0.appspot.com")
         
@@ -92,7 +94,7 @@ class AddRecipeViewController: UIViewController {
             saveRercipe = false
             print("Please enter recipe instructions")
         }
-        if let recipeDescription = addrecipe_TE_description.text{
+        if let recipeDescription = addrecipe_LBL_edit.text{
             addRecipeBrain.setUserRecipeDescription(description: recipeDescription)
         }else{
             saveRercipe = false
@@ -104,7 +106,7 @@ class AddRecipeViewController: UIViewController {
             saveRercipe = false
             print("Please enter recipe ingrediencies")
         }
-        
+        print("=====> \(addrecipe_LBL_edit.text)")
         if saveRercipe{
             let imageName = "\(user.getUserPhone())/\(addRecipeBrain.getRecipe().name!).jpg"
             self.addRecipeBrain.setUserRecipeImage(image: imageName)
@@ -117,7 +119,7 @@ class AddRecipeViewController: UIViewController {
     }
     func clearView(){
         addrecipe_TE_name.text = nil
-        addrecipe_TE_description.text = nil
+        addrecipe_LBL_edit.text = nil
         addrecipe_TE_ingrediencies.text = nil
         addrecipe_TE_instructions.text = nil
         
