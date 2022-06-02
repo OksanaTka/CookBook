@@ -17,27 +17,27 @@
                 <rect key="frame" x="0.0" y="0.0" width="334" height="120"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="GCI-9k-zMd">
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="GCI-9k-zMd">
                         <rect key="frame" x="10" y="10" width="314" height="100"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ocg-F1-yH9">
-                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ocg-F1-yH9">
+                                <rect key="frame" x="0.0" y="0.0" width="130" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="526-XG-bku"/>
-                                    <constraint firstAttribute="width" constant="100" id="wfI-ok-Qtf"/>
+                                    <constraint firstAttribute="width" constant="130" id="wfI-ok-Qtf"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ErM-BF-74I">
-                                <rect key="frame" x="102" y="0.0" width="180" height="100"/>
+                                <rect key="frame" x="132" y="0.0" width="150" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKO-ms-iWK">
-                                        <rect key="frame" x="39.5" y="5" width="101" height="20.5"/>
+                                        <rect key="frame" x="24.5" y="5" width="101" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="jnE-5a-BrR">
-                                        <rect key="frame" x="49" y="40.5" width="82.5" height="30"/>
+                                        <rect key="frame" x="34" y="30.5" width="82.5" height="30"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Like" translatesAutoresizingMaskIntoConstraints="NO" id="6to-Ua-uJy">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -58,13 +58,13 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="eKO-ms-iWK" firstAttribute="centerX" secondItem="ErM-BF-74I" secondAttribute="centerX" id="4p5-YM-5sC"/>
-                                    <constraint firstItem="jnE-5a-BrR" firstAttribute="top" secondItem="eKO-ms-iWK" secondAttribute="bottom" constant="15" id="CvQ-cA-n1W"/>
+                                    <constraint firstItem="jnE-5a-BrR" firstAttribute="top" secondItem="eKO-ms-iWK" secondAttribute="bottom" constant="5" id="CvQ-cA-n1W"/>
                                     <constraint firstItem="eKO-ms-iWK" firstAttribute="top" secondItem="ErM-BF-74I" secondAttribute="top" constant="5" id="NpA-Ff-aex"/>
                                     <constraint firstItem="jnE-5a-BrR" firstAttribute="centerX" secondItem="ErM-BF-74I" secondAttribute="centerX" id="xaF-1d-MBs"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eyc-c4-Xbd">
-                                <rect key="frame" x="284" y="70" width="30" height="30"/>
+                                <rect key="frame" x="284" y="35" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="DM3-5N-Zrn"/>
                                     <constraint firstAttribute="height" constant="30" id="wPp-wD-dWI"/>
@@ -76,6 +76,9 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="ErM-BF-74I" firstAttribute="top" secondItem="GCI-9k-zMd" secondAttribute="top" id="Dmd-5S-dpp"/>
+                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>

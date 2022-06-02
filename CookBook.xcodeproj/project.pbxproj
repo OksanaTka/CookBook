@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A7ACBC12849394900D70562 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A7ACBC02849394900D70562 /* GoogleService-Info.plist */; };
 		8A39B6CE283F8A8200E53FF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39B6CD283F8A8200E53FF2 /* AppDelegate.swift */; };
 		8A39B6D0283F8A8200E53FF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39B6CF283F8A8200E53FF2 /* SceneDelegate.swift */; };
 		8A39B6D2283F8A8200E53FF2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39B6D1283F8A8200E53FF2 /* LoginViewController.swift */; };
 		8A39B6D5283F8A8200E53FF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A39B6D3283F8A8200E53FF2 /* Main.storyboard */; };
 		8A39B6D7283F8A8300E53FF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A39B6D6283F8A8300E53FF2 /* Assets.xcassets */; };
 		8A39B6DA283F8A8300E53FF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A39B6D8283F8A8300E53FF2 /* LaunchScreen.storyboard */; };
-		8A39B6E5283FABC500E53FF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A39B6E4283FABC500E53FF2 /* GoogleService-Info.plist */; };
 		8A39B6E7283FB0A200E53FF2 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39B6E6283FB0A200E53FF2 /* AuthManager.swift */; };
 		8A39B6E9283FDD5000E53FF2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39B6E8283FDD5000E53FF2 /* HomeViewController.swift */; };
 		8A39B6EB283FE91B00E53FF2 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39B6EA283FE91B00E53FF2 /* Recipe.swift */; };
@@ -33,6 +33,7 @@
 /* Begin PBXFileReference section */
 		20C82ADF8A15BFEF4E326D63 /* Pods_CookBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CookBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C62C564712F05828F579C8D /* Pods-CookBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBook.release.xcconfig"; path = "Target Support Files/Pods-CookBook/Pods-CookBook.release.xcconfig"; sourceTree = "<group>"; };
+		5A7ACBC02849394900D70562 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8A39B6CA283F8A8200E53FF2 /* CookBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A39B6CD283F8A8200E53FF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A39B6CF283F8A8200E53FF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,7 +42,6 @@
 		8A39B6D6283F8A8300E53FF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A39B6D9283F8A8300E53FF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A39B6DB283F8A8300E53FF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8A39B6E4283FABC500E53FF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8A39B6E6283FB0A200E53FF2 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		8A39B6E8283FDD5000E53FF2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8A39B6EA283FE91B00E53FF2 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 				8A39B6D6283F8A8300E53FF2 /* Assets.xcassets */,
 				8A39B6D8283F8A8300E53FF2 /* LaunchScreen.storyboard */,
 				8A39B6DB283F8A8300E53FF2 /* Info.plist */,
-				8A39B6E4283FABC500E53FF2 /* GoogleService-Info.plist */,
+				5A7ACBC02849394900D70562 /* GoogleService-Info.plist */,
 			);
 			path = CookBook;
 			sourceTree = "<group>";
@@ -218,8 +218,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A39B6DA283F8A8300E53FF2 /* LaunchScreen.storyboard in Resources */,
-				8A39B6E5283FABC500E53FF2 /* GoogleService-Info.plist in Resources */,
 				8A66FD6C284288D300596D66 /* RecipeCell.xib in Resources */,
+				5A7ACBC12849394900D70562 /* GoogleService-Info.plist in Resources */,
 				8A39B6D7283F8A8300E53FF2 /* Assets.xcassets in Resources */,
 				8A39B6D5283F8A8200E53FF2 /* Main.storyboard in Resources */,
 			);
