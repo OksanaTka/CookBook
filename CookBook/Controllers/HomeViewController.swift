@@ -1,9 +1,3 @@
-//
-//  HomeViewController.swift
-//  CookBook
-//
-//  Created by user216397 on 5/26/22.
-//
 
 import UIKit
 import FirebaseFirestore
@@ -25,11 +19,9 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("--------->TABLE VIEW???? in func")
         home_TV_table.dataSource = self
         home_TV_table.register(UINib(nibName: "RecipeCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
-        
-        
+ 
     }
     
     
@@ -47,7 +39,6 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("--------->count \(homeBrain.getRecipeMap().count)")
         return homeBrain.getRecipeMapSize()
     }
     
@@ -69,11 +60,9 @@ extension HomeViewController : UITableViewDataSource{
         cell.recipe_BTN_detailes.tag = indexPath.row
         
         if(!user.getLikedRecipeList().isEmpty && user.getLikedRecipeList().contains(recipeIndex)){
-            print("---> true")
             cell.recipe_IMG_like.image = UIImage(named: "Like")
         }
         else{
-            print("---> false")
             cell.recipe_IMG_like.image = UIImage(named: "Unlike")
         }
         
@@ -101,7 +90,6 @@ extension HomeViewController: MyTableViewCellDelegate{
 extension HomeViewController: TableViewCellDelegate{
     func updateTable() {
         home_TV_table.reloadData()
-        print("4545454545454545454545454545454545454545454545454545454")
     }
     
     

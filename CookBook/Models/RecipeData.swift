@@ -23,4 +23,13 @@ class RecipeData {
     func getRecipeMap() -> [String:Recipe]{
         return recipesMap
     }
+    
+    func addLikeToRecipe(_ recipeId: String){
+        let currentValue = (recipesMap[recipeId]?.numberOfLikes)!
+        recipesMap[recipeId]?.numberOfLikes = currentValue + 1
+    }
+    func decreaseLikeFromRecipe(_ recipeId: String){
+        let currentValue = (recipesMap[recipeId]?.numberOfLikes)!
+        recipesMap[recipeId]?.numberOfLikes = currentValue - 1
+    }
 }

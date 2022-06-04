@@ -104,7 +104,7 @@
         <image name="Like" width="512" height="512"/>
         <image name="More" width="512" height="512"/>
         <namedColor name="Background Color">
-            <color red="0.94901961089999998" green="0.94509804249999996" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

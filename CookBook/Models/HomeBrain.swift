@@ -24,12 +24,10 @@ struct HomeBrain {
    mutating func setUserRecipeName(name: String){
         self.userRecipe.name = name
     }
-//    mutating func setUserRecipeLike(like: Bool){
-//        self.userRecipe.liked = like
+
+//    mutating func setUserRecipeImage(image: String){
+//        self.userRecipe.imageName = image
 //    }
-    mutating func setUserRecipeImage(image: String){
-        self.userRecipe.imageName = image
-    }
     
     mutating func addRecipeToMap(recipeId: String,newRecipe: Recipe){
         self.recipeData.addRecipeToMap(recipeId, newRecipe)

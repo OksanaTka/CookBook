@@ -11,6 +11,9 @@ struct AddRecipeBrain {
     var ImagePathUserPhone: URL?
     var user = User.user
     
+    func getImageName() -> String{
+        return "\(user.getUserPhone())/\(newRecipe.name).jpg"
+    }
     
     mutating func setImagePathUserPhone(path: URL){
          self.ImagePathUserPhone = path
@@ -31,13 +34,12 @@ struct AddRecipeBrain {
    mutating func setUserRecipeName(name: String){
         self.newRecipe.name = name
     }
-//    mutating func setUserRecipeLike(like: Bool){
-//        user.
-//        self.newRecipe.liked = like
-//    }
-    mutating func setUserRecipeImage(image: String){
-        self.newRecipe.imageName = image
-    }
+    
+    mutating func setNumberOfLikes(likesNumber: Int){
+         self.newRecipe.numberOfLikes = likesNumber
+     }
+    
+
     
     mutating func setUserRecipeInstructions(instructions: String){
         self.newRecipe.instructions = instructions

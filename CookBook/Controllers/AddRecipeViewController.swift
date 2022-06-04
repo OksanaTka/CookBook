@@ -64,13 +64,13 @@ class AddRecipeViewController: UIViewController {
         
     }
     
-    func uploadImageToStorage(){
+    func UploadImageToStorage(){
         // File located on disk
         let localFile = addRecipeBrain.getImagePathUserPhone()
         let storageRef = storage.reference()
         
         // Create a reference to the file you want to upload
-        let riversRef = storageRef.child(addRecipeBrain.getRecipe().imageName!)
+        let riversRef = storageRef.child("\(user)")
         
         // Upload the file to the path "images/___.jpg"
         let uploadTask = riversRef.putFile(from: localFile, metadata: nil) { metadata, error in
@@ -84,8 +84,8 @@ class AddRecipeViewController: UIViewController {
             riversRef.downloadURL { (url, error) in
                 self.addRecipeBrain.setImageURL(imageURL: url!)
                 print("----> image URL ADD")
-                self.saveRecipeInFirestore()
-                self.clearView()
+                self.SaveRecipeInFirestore()
+                self.ClearView()
                 guard let downloadURL = url else {
                     // Uh-oh, an error occurred!
                     return
@@ -124,15 +124,14 @@ class AddRecipeViewController: UIViewController {
         }
         
         if saveRercipe{
-            let imageName = "\(addRecipeBrain.getRecipe().imageName!)"
-            self.addRecipeBrain.setUserRecipeImage(image: imageName)
+            self.addRecipeBrain.setNumberOfLikes(likesNumber: 0)
             addRecipeBrain.setUserRecipeUserId(userId: user.getUserPhone())
             
-            uploadImageToStorage()
+            UploadImageToStorage()
         }
     }
     
-    func clearView(){
+    func ClearView(){
         addrecipe_TE_name.text = nil
         addrecipe_LBL_description.text = nil
         addrecipe_TE_ingrediencies.text = nil
@@ -141,7 +140,7 @@ class AddRecipeViewController: UIViewController {
         addrecipe_BTN_addimage.isHidden = false
         addrecipe_IMG_image.isHidden = true
     }
-    func saveRecipeInFirestore(){
+    func SaveRecipeInFirestore(){
         //generate uid
         let ref = db.collection("recipes")
         let recipeId = ref.document().documentID
@@ -152,12 +151,12 @@ class AddRecipeViewController: UIViewController {
             let recipeData = RecipeData.recipeData
             user.addRecipeIdToList(recipeId: recipeId)
             recipeData.addRecipeToMap(recipeId, newRecipe)
-            updateUserRecipeListFirestore()
+            UpdateUserRecipeListFirestore()
         } catch let error {
             print("Error writing city to Firestore: \(error)")
         }
     }
-    func updateUserRecipeListFirestore(){
+    func UpdateUserRecipeListFirestore(){
         let washingtonRef = db.collection("users").document(user.getUserPhone())
         
         
@@ -175,26 +174,11 @@ class AddRecipeViewController: UIViewController {
         
     }
     
-    //    func addNewUser(){
-    //        print("-------> save user in firebase")
-    //
-    //        do {
-    //            try db.collection("users").document(user.getUserPhone()).setData(["recipes":user.getRecipeList()])
-    //        } catch let error {
-    //            print("Error writing city to Firestore: \(error)")
-    //        }
-    //    }
     
     @IBAction func UploadPicture(_ sender: UIButton) {
         showImagePickerController()
     }
-    
-    func saveInFirestore(){
-        
-    }
-    
-    
-    
+     
 }
 
 extension AddRecipeViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate{
@@ -210,8 +194,6 @@ extension AddRecipeViewController: UIImagePickerControllerDelegate,UINavigationC
             self.addrecipe_IMG_image.isHidden = false
             self.addrecipe_IMG_image.imageFrom(url: imageUrl)
             self.addRecipeBrain.setImagePathUserPhone(path: imageUrl)
-            print("--------------->uploaded")
-            
         }
         dismiss(animated: true,completion: nil)
         
