@@ -19,7 +19,7 @@
 		8A39B6EB283FE91B00E53FF2 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39B6EA283FE91B00E53FF2 /* Recipe.swift */; };
 		8A39B6ED283FE97800E53FF2 /* HomeBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39B6EC283FE97800E53FF2 /* HomeBrain.swift */; };
 		8A39B6EF283FEEA800E53FF2 /* AddRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39B6EE283FEEA800E53FF2 /* AddRecipeViewController.swift */; };
-		8A39B6F1283FEEBB00E53FF2 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39B6F0283FEEBB00E53FF2 /* RecipeViewController.swift */; };
+		8A39B6F1283FEEBB00E53FF2 /* RecipeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39B6F0283FEEBB00E53FF2 /* RecipeDetailsViewController.swift */; };
 		8A39B6F3283FEED200E53FF2 /* MyRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39B6F2283FEED200E53FF2 /* MyRecipeViewController.swift */; };
 		8A39B6F52840024000E53FF2 /* AddRecipeBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39B6F42840024000E53FF2 /* AddRecipeBrain.swift */; };
 		8A5DA5C4284222600070409E /* RecipeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5DA5C3284222600070409E /* RecipeData.swift */; };
@@ -47,7 +47,7 @@
 		8A39B6EA283FE91B00E53FF2 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		8A39B6EC283FE97800E53FF2 /* HomeBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBrain.swift; sourceTree = "<group>"; };
 		8A39B6EE283FEEA800E53FF2 /* AddRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeViewController.swift; sourceTree = "<group>"; };
-		8A39B6F0283FEEBB00E53FF2 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		8A39B6F0283FEEBB00E53FF2 /* RecipeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsViewController.swift; sourceTree = "<group>"; };
 		8A39B6F2283FEED200E53FF2 /* MyRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecipeViewController.swift; sourceTree = "<group>"; };
 		8A39B6F42840024000E53FF2 /* AddRecipeBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeBrain.swift; sourceTree = "<group>"; };
 		8A5DA5C3284222600070409E /* RecipeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeData.swift; sourceTree = "<group>"; };
@@ -101,10 +101,10 @@
 			isa = PBXGroup;
 			children = (
 				8A39B6E3283F988000E53FF2 /* Models */,
-				8A39B6CD283F8A8200E53FF2 /* AppDelegate.swift */,
-				8A39B6CF283F8A8200E53FF2 /* SceneDelegate.swift */,
 				8A39B6E2283F985A00E53FF2 /* Controllers */,
 				8A39B6E1283F984500E53FF2 /* Views */,
+				8A39B6CD283F8A8200E53FF2 /* AppDelegate.swift */,
+				8A39B6CF283F8A8200E53FF2 /* SceneDelegate.swift */,
 				8A39B6D6283F8A8300E53FF2 /* Assets.xcassets */,
 				8A39B6D8283F8A8300E53FF2 /* LaunchScreen.storyboard */,
 				8A39B6DB283F8A8300E53FF2 /* Info.plist */,
@@ -129,7 +129,7 @@
 				8A39B6D1283F8A8200E53FF2 /* LoginViewController.swift */,
 				8A39B6E8283FDD5000E53FF2 /* HomeViewController.swift */,
 				8A39B6EE283FEEA800E53FF2 /* AddRecipeViewController.swift */,
-				8A39B6F0283FEEBB00E53FF2 /* RecipeViewController.swift */,
+				8A39B6F0283FEEBB00E53FF2 /* RecipeDetailsViewController.swift */,
 				8A39B6F2283FEED200E53FF2 /* MyRecipeViewController.swift */,
 			);
 			path = Controllers;
@@ -287,7 +287,7 @@
 				8A39B6D0283F8A8200E53FF2 /* SceneDelegate.swift in Sources */,
 				8AB8FD3028411B5F005CA76B /* User.swift in Sources */,
 				8A39B6F3283FEED200E53FF2 /* MyRecipeViewController.swift in Sources */,
-				8A39B6F1283FEEBB00E53FF2 /* RecipeViewController.swift in Sources */,
+				8A39B6F1283FEEBB00E53FF2 /* RecipeDetailsViewController.swift in Sources */,
 				8A39B6F52840024000E53FF2 /* AddRecipeBrain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

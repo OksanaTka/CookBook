@@ -30,6 +30,23 @@ class LoginViewController: UIViewController {
         performSegue(withIdentifier: "goToHome", sender: self)
     }
     
+    
+    
+    func getUserLikedRecipesFromFirestore(){
+        let docRef = db.collection("users").document(user.getUserPhone())
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let recipesIdsList = document.data()!["likes"]! as! [String]
+                self.user.setLikedRecipeList(recipeLikedIdsList: recipesIdsList)
+
+            } else {
+                print("Document does not exist")
+
+            }
+        }
+    }
+    
     func getUserRecipesFromFirestore(){
         let docRef = db.collection("users").document(user.getUserPhone())
 
@@ -38,6 +55,7 @@ class LoginViewController: UIViewController {
                 let recipesIdsList = document.data()!["recipes"]! as! [String]
                 self.user.setRecipeList(recipeIdsList: recipesIdsList)
                 self.getAllRecipies()
+                self.getUserLikedRecipesFromFirestore()
                 
                 
             } else {
@@ -112,7 +130,6 @@ class LoginViewController: UIViewController {
                         return
                     }else{
                         self.getUserRecipesFromFirestore()
-                        //self.goToHomeViewController()
                         print("Authentication success with- " + (authDate?.user.phoneNumber! ?? "No phone number") )
                     }
                 })

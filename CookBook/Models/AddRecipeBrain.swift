@@ -8,7 +8,8 @@
 import Foundation
 struct AddRecipeBrain {
     var newRecipe = Recipe()
-    var ImagePathUserPhone: URL?    
+    var ImagePathUserPhone: URL?
+    var user = User.user
     
     
     mutating func setImagePathUserPhone(path: URL){
@@ -30,9 +31,10 @@ struct AddRecipeBrain {
    mutating func setUserRecipeName(name: String){
         self.newRecipe.name = name
     }
-    mutating func setUserRecipeLike(like: Bool){
-        self.newRecipe.liked = like
-    }
+//    mutating func setUserRecipeLike(like: Bool){
+//        user.
+//        self.newRecipe.liked = like
+//    }
     mutating func setUserRecipeImage(image: String){
         self.newRecipe.imageName = image
     }

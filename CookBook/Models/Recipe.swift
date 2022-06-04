@@ -9,7 +9,6 @@ import Foundation
 struct Recipe : Codable{
     var userId: String?
     var name: String?
-    var liked: Bool?
     var numberOfLikes: Int?
     var imageName: String?
     var instructions: String?

@@ -11,7 +11,7 @@ class User{
     static let user = User()
     private var userPhone: String?
     private var userRecipesIdList: [String] = []
-    
+    private var userLikedRecipesIdList: [String] = []
     
     var initUser: Bool?
     //Initializer access level change now
@@ -39,6 +39,22 @@ class User{
     }
     func setUserPhone(userPhone: String){
         self.userPhone = userPhone
+    }
+    
+    func addLikedRecipe(recipeId: String){
+       userLikedRecipesIdList.append(recipeId)
+    }
+    
+    func removeLikedRecipe(recipeId: String){
+       userLikedRecipesIdList.removeAll {$0 == recipeId}
+    }
+    
+    func getLikedRecipeList() -> [String]{
+        return userLikedRecipesIdList
+    }
+    
+    func setLikedRecipeList(recipeLikedIdsList: [String]){
+        self.userLikedRecipesIdList.append(contentsOf: recipeLikedIdsList)
     }
     
 }

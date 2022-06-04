@@ -15,16 +15,15 @@ import FirebaseStorage
 
 class AddRecipeViewController: UIViewController {
     
-    @IBOutlet weak var addrecipe_LBL_edit: UITextView!
+    @IBOutlet weak var addrecipe_LBL_description: UITextView!
+    @IBOutlet weak var addrecipe_TE_ingrediencies: UITextView!
+    @IBOutlet weak var addrecipe_LBL_instructions: UITextView!
     @IBOutlet weak var addrecipe_BTN_addimage: UIButton!
-    
     @IBOutlet weak var addrecipe_TE_name: UITextField!
     @IBOutlet weak var addrecipe_IMG_image: UIImageView!
-    
     @IBOutlet weak var addrecipe_TE_save: UIButton!
-    @IBOutlet weak var addrecipe_TE_instructions: UITextField!
-    @IBOutlet weak var addrecipe_TE_ingrediencies: UITextField!
-    @IBOutlet weak var addrecipe_TE_description: UITextField!
+
+    
     //var storage = Storage.storage()
     var addRecipeBrain = AddRecipeBrain()
     let user = User.user
@@ -35,6 +34,8 @@ class AddRecipeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("dmfndskjfjkdshfjkdshfkjsdhfjkdsfkhdskfhjk")
+        initLBLView()
         
         // Get a non-default Cloud Storage bucket
         // storage = Storage.storage(url:"gs://cookbook-e4cd0.appspot.com")
@@ -45,18 +46,33 @@ class AddRecipeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
+    func initLBLView(){
+        addrecipe_TE_name.layer.borderWidth = 0.5
+        addrecipe_TE_name.layer.cornerRadius = 5.0
+        
+        addrecipe_LBL_description.layer.borderWidth = 0.5
+        addrecipe_LBL_description.layer.borderColor = UIColor.lightGray.cgColor
+        addrecipe_LBL_description.layer.cornerRadius = 5.0
+        
+        addrecipe_TE_ingrediencies.layer.borderWidth = 0.5
+         addrecipe_TE_ingrediencies.layer.borderColor = UIColor.lightGray.cgColor
+        
+        addrecipe_TE_ingrediencies.layer.cornerRadius = 5.0
+        addrecipe_LBL_instructions.layer.borderWidth = 0.5
+          addrecipe_LBL_instructions.layer.borderColor = UIColor.lightGray.cgColor
+        addrecipe_LBL_instructions.layer.cornerRadius = 5.0
+        
+    }
     
     func uploadImageToStorage(){
         // File located on disk
         let localFile = addRecipeBrain.getImagePathUserPhone()
         let storageRef = storage.reference()
+        
         // Create a reference to the file you want to upload
-        let userPhone = user.getUserPhone()
-        let recipeName = addRecipeBrain.getRecipe().name
         let riversRef = storageRef.child(addRecipeBrain.getRecipe().imageName!)
         
-        // Upload the file to the path "images/rivers.jpg"
+        // Upload the file to the path "images/___.jpg"
         let uploadTask = riversRef.putFile(from: localFile, metadata: nil) { metadata, error in
             guard let metadata = metadata else {
                 // Uh-oh, an error occurred!
@@ -88,13 +104,13 @@ class AddRecipeViewController: UIViewController {
             saveRercipe = false
             print("Please enter recipe name")
         }
-        if let recipeInstructions = addrecipe_TE_instructions.text{
+        if let recipeInstructions = addrecipe_LBL_instructions.text{
             addRecipeBrain.setUserRecipeInstructions(instructions: recipeInstructions)
         }else{
             saveRercipe = false
             print("Please enter recipe instructions")
         }
-        if let recipeDescription = addrecipe_LBL_edit.text{
+        if let recipeDescription = addrecipe_LBL_description.text{
             addRecipeBrain.setUserRecipeDescription(description: recipeDescription)
         }else{
             saveRercipe = false
@@ -106,28 +122,26 @@ class AddRecipeViewController: UIViewController {
             saveRercipe = false
             print("Please enter recipe ingrediencies")
         }
-        print("=====> \(addrecipe_LBL_edit.text)")
+        
         if saveRercipe{
-            let imageName = "\(user.getUserPhone())/\(addRecipeBrain.getRecipe().name!).jpg"
+            let imageName = "\(addRecipeBrain.getRecipe().imageName!)"
             self.addRecipeBrain.setUserRecipeImage(image: imageName)
             addRecipeBrain.setUserRecipeUserId(userId: user.getUserPhone())
             
             uploadImageToStorage()
-            
         }
-        
     }
+    
     func clearView(){
         addrecipe_TE_name.text = nil
-        addrecipe_LBL_edit.text = nil
+        addrecipe_LBL_description.text = nil
         addrecipe_TE_ingrediencies.text = nil
-        addrecipe_TE_instructions.text = nil
+        addrecipe_LBL_instructions.text = nil
         
         addrecipe_BTN_addimage.isHidden = false
         addrecipe_IMG_image.isHidden = true
     }
     func saveRecipeInFirestore(){
-        print("-------> save in firebase")
         //generate uid
         let ref = db.collection("recipes")
         let recipeId = ref.document().documentID

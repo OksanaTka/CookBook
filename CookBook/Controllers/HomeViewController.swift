@@ -12,6 +12,8 @@ import FirebaseStorage
 
 class HomeViewController: UIViewController {
 
+    
+
     @IBOutlet weak var home_TV_table: UITableView!
     
     let db = Firestore.firestore()
@@ -26,13 +28,16 @@ class HomeViewController: UIViewController {
         print("--------->TABLE VIEW???? in func")
         home_TV_table.dataSource = self
         home_TV_table.register(UINib(nibName: "RecipeCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
+        
+        
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openRecipe"{
-            let recipeDetailsVC = segue.destination as! RecipeViewController
-            recipeDetailsVC.recipeIndex = homeBrain.getCurrentRecipeIndex()
+            let recipeDetailsVC = segue.destination as! RecipeDetailsViewController
+            recipeDetailsVC.index = homeBrain.getCurrentRecipeIndex()
+            recipeDetailsVC.delegate = self
         }
     }
 
@@ -51,11 +56,11 @@ extension HomeViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = home_TV_table.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! RecipeCell
         
-        let index = Array(homeBrain.getRecipeMap().keys)[indexPath.row]
-        let recipe = homeBrain.getRecipeMap()[index]!
+        let recipeIndex = Array(homeBrain.getRecipeMap().keys)[indexPath.row]
+        let recipe = homeBrain.getRecipeMap()[recipeIndex]!
         
         cell.recipe = recipe
-        cell.index = index
+        cell.index = recipeIndex
         
         // init cell
         cell.recipe_IMG_image.imageFrom(url: recipe.imageURL!)
@@ -63,7 +68,7 @@ extension HomeViewController : UITableViewDataSource{
         cell.recipe_LBL_likes.text = "\(recipe.numberOfLikes ?? 0)"
         cell.recipe_BTN_detailes.tag = indexPath.row
         
-        if(recipe.liked ?? false){
+        if(!user.getLikedRecipeList().isEmpty && user.getLikedRecipeList().contains(recipeIndex)){
             print("---> true")
             cell.recipe_IMG_like.image = UIImage(named: "Like")
         }
@@ -92,4 +97,12 @@ extension HomeViewController: MyTableViewCellDelegate{
         homeBrain.setCurrentRecipeIndex(index: index)
         self.performSegue(withIdentifier: "openRecipe", sender: self)
     }
+}
+extension HomeViewController: TableViewCellDelegate{
+    func updateTable() {
+        home_TV_table.reloadData()
+        print("4545454545454545454545454545454545454545454545454545454")
+    }
+    
+    
 }

@@ -16,9 +16,9 @@ class RecipeData {
     private init(){}
     
     func addRecipeToMap(_ recipeId: String,_ newRecipe: Recipe){
-       // recipesMap.app(newRecipe)
         recipesMap[recipeId] = newRecipe
     }
+    
     
     func getRecipeMap() -> [String:Recipe]{
         return recipesMap

@@ -3,8 +3,8 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -55,7 +55,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="Background Color"/>
                                 <constraints>
                                     <constraint firstItem="eKO-ms-iWK" firstAttribute="centerX" secondItem="ErM-BF-74I" secondAttribute="centerX" id="4p5-YM-5sC"/>
                                     <constraint firstItem="jnE-5a-BrR" firstAttribute="top" secondItem="eKO-ms-iWK" secondAttribute="bottom" constant="5" id="CvQ-cA-n1W"/>
@@ -81,6 +81,7 @@
                         </constraints>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" name="Background Color"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="GCI-9k-zMd" secondAttribute="trailing" constant="10" id="0UG-9a-EUo"/>
                     <constraint firstItem="GCI-9k-zMd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="RqE-1y-8dn"/>
@@ -102,8 +103,8 @@
     <resources>
         <image name="Like" width="512" height="512"/>
         <image name="More" width="512" height="512"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="Background Color">
+            <color red="0.94901961089999998" green="0.94509804249999996" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
     </resources>
 </document>
