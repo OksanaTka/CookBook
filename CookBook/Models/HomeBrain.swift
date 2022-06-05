@@ -1,14 +1,10 @@
-//
-//  HomeBrain.swift
-//  CookBook
-//
-//  Created by user216397 on 5/26/22.
-//
 
 import Foundation
 struct HomeBrain {
+    
     var userRecipe = Recipe()
-    var recipeData = RecipeData.recipeData
+    let recipeData = RecipeData.recipeData
+    let user = User.user
     
     var currentRecipeIndex: Int?
     
@@ -25,10 +21,6 @@ struct HomeBrain {
         self.userRecipe.name = name
     }
 
-//    mutating func setUserRecipeImage(image: String){
-//        self.userRecipe.imageName = image
-//    }
-    
     mutating func addRecipeToMap(recipeId: String,newRecipe: Recipe){
         self.recipeData.addRecipeToMap(recipeId, newRecipe)
         
@@ -40,6 +32,10 @@ struct HomeBrain {
     
     func getRecipeMapSize() -> Int{
         return recipeData.getRecipeMap().count
+    }
+    
+    func recipeExistInLikedList(recipeId: String) ->Bool {
+         return !user.getLikedRecipeList().isEmpty && user.getLikedRecipeList().contains(recipeId)
     }
     
     

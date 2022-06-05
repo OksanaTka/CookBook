@@ -13,28 +13,24 @@ class HomeViewController: UIViewController {
     let db = Firestore.firestore()
     var storage = Storage.storage()
     var homeBrain = HomeBrain()
-    var recipeData = RecipeData.recipeData
-    let user = User.user
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //init table view
         home_TV_table.dataSource = self
         home_TV_table.register(UINib(nibName: "RecipeCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
- 
     }
-    
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openRecipe"{
             let recipeDetailsVC = segue.destination as! RecipeDetailsViewController
+            //init recipe index
             recipeDetailsVC.index = homeBrain.getCurrentRecipeIndex()
             recipeDetailsVC.delegate = self
         }
     }
-
 }
-
 
 
 extension HomeViewController : UITableViewDataSource{
@@ -42,24 +38,21 @@ extension HomeViewController : UITableViewDataSource{
         return homeBrain.getRecipeMapSize()
     }
     
-
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = home_TV_table.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! RecipeCell
         
+        //get recipe from Map
         let recipeIndex = Array(homeBrain.getRecipeMap().keys)[indexPath.row]
         let recipe = homeBrain.getRecipeMap()[recipeIndex]!
-        
-        cell.recipe = recipe
-        cell.index = recipeIndex
         
         // init cell
         cell.recipe_IMG_image.imageFrom(url: recipe.imageURL!)
         cell.recipe_LBL_name.text = "\(recipe.name!)"
         cell.recipe_LBL_likes.text = "\(recipe.numberOfLikes ?? 0)"
+        //save cell index
         cell.recipe_BTN_detailes.tag = indexPath.row
-        
-        if(!user.getLikedRecipeList().isEmpty && user.getLikedRecipeList().contains(recipeIndex)){
+
+        if(homeBrain.recipeExistInLikedList(recipeId: recipeIndex)){
             cell.recipe_IMG_like.image = UIImage(named: "Like")
         }
         else{
@@ -70,7 +63,6 @@ extension HomeViewController : UITableViewDataSource{
         
         return cell
     }
-    
 
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,10 +79,9 @@ extension HomeViewController: MyTableViewCellDelegate{
         self.performSegue(withIdentifier: "openRecipe", sender: self)
     }
 }
+
 extension HomeViewController: TableViewCellDelegate{
     func updateTable() {
         home_TV_table.reloadData()
-    }
-    
-    
+    } 
 }

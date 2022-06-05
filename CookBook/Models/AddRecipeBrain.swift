@@ -10,9 +10,10 @@ struct AddRecipeBrain {
     var newRecipe = Recipe()
     var ImagePathUserPhone: URL?
     var user = User.user
+    let recipeData = RecipeData.recipeData
     
     func getImageName() -> String{
-        return "\(user.getUserPhone())/\(newRecipe.name).jpg"
+        return "\(user.getUserPhone())/\(newRecipe.name!).jpg"
     }
     
     mutating func setImagePathUserPhone(path: URL){
@@ -39,14 +40,12 @@ struct AddRecipeBrain {
          self.newRecipe.numberOfLikes = likesNumber
      }
     
-
-    
     mutating func setUserRecipeInstructions(instructions: String){
         self.newRecipe.instructions = instructions
     }
     
-    mutating func setUserRecipeIngrediencies(ingrediencies: String){
-        self.newRecipe.ingrediencies = ingrediencies
+    mutating func setUserRecipeIngredients(ingredients: String){
+        self.newRecipe.ingredients = ingredients
     }
     
     mutating func setUserRecipeDescription(description: String){
@@ -59,6 +58,30 @@ struct AddRecipeBrain {
     
     func getRecipe() -> Recipe{
         return newRecipe
+    }
+    
+    func addNewRecipeIdUserList(recipeId: String){
+        user.addRecipeIdToList(recipeId: recipeId)
+    }
+    
+    func addNewRecipeToMap(recipeId: String, recipe: Recipe){
+        recipeData.addRecipeToMap(recipeId, recipe)
+    }
+    
+    func getUserRecipeIdList() -> [String]{
+        return user.getRecipeList()
+    }
+    
+    func getUserPhone() -> String{
+        return user.getUserPhone()
+    }
+    
+    func getUser() -> User{
+        return user
+    }
+    
+    func addUserRecipeToMap(recipeId: String , recipe:Recipe){
+        recipeData.addUserRecipeToMap(recipeId, recipe)
     }
     
 

@@ -1,9 +1,3 @@
-//
-//  AddRecipeViewController.swift
-//  CookBook
-//
-//  Created by user216397 on 5/26/22.
-//
 
 import UIKit
 import FirebaseCore
@@ -13,10 +7,11 @@ import FirebaseStorage
 
 
 
+
 class AddRecipeViewController: UIViewController {
     
     @IBOutlet weak var addrecipe_LBL_description: UITextView!
-    @IBOutlet weak var addrecipe_TE_ingrediencies: UITextView!
+    @IBOutlet weak var addrecipe_TE_ingredients: UITextView!
     @IBOutlet weak var addrecipe_LBL_instructions: UITextView!
     @IBOutlet weak var addrecipe_BTN_addimage: UIButton!
     @IBOutlet weak var addrecipe_TE_name: UITextField!
@@ -24,53 +19,45 @@ class AddRecipeViewController: UIViewController {
     @IBOutlet weak var addrecipe_TE_save: UIButton!
 
     
-    //var storage = Storage.storage()
     var addRecipeBrain = AddRecipeBrain()
-    let user = User.user
     let db = Firestore.firestore()
     var storage = Storage.storage()
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("dmfndskjfjkdshfjkdshfkjsdhfjkdsfkhdskfhjk")
         initLBLView()
         
         // Get a non-default Cloud Storage bucket
-        // storage = Storage.storage(url:"gs://cookbook-e4cd0.appspot.com")
-        
-        // Get a non-default Cloud Storage bucket
         storage = Storage.storage(url:"gs://cookbook-e4cd0.appspot.com")
-        
-        // Do any additional setup after loading the view.
     }
     
     func initLBLView(){
         addrecipe_TE_name.layer.borderWidth = 0.5
         addrecipe_TE_name.layer.cornerRadius = 5.0
+        addrecipe_TE_name.layer.borderColor = UIColor.lightGray.cgColor
         
         addrecipe_LBL_description.layer.borderWidth = 0.5
         addrecipe_LBL_description.layer.borderColor = UIColor.lightGray.cgColor
         addrecipe_LBL_description.layer.cornerRadius = 5.0
         
-        addrecipe_TE_ingrediencies.layer.borderWidth = 0.5
-         addrecipe_TE_ingrediencies.layer.borderColor = UIColor.lightGray.cgColor
+        addrecipe_TE_ingredients.layer.borderWidth = 0.5
+         addrecipe_TE_ingredients.layer.borderColor = UIColor.lightGray.cgColor
+        addrecipe_TE_ingredients.layer.cornerRadius = 5.0
         
-        addrecipe_TE_ingrediencies.layer.cornerRadius = 5.0
         addrecipe_LBL_instructions.layer.borderWidth = 0.5
-          addrecipe_LBL_instructions.layer.borderColor = UIColor.lightGray.cgColor
+        addrecipe_LBL_instructions.layer.borderColor = UIColor.lightGray.cgColor
         addrecipe_LBL_instructions.layer.cornerRadius = 5.0
-        
     }
+
     
-    func UploadImageToStorage(){
+    func uploadImageToStorage(){
         // File located on disk
         let localFile = addRecipeBrain.getImagePathUserPhone()
         let storageRef = storage.reference()
         
         // Create a reference to the file you want to upload
-        let riversRef = storageRef.child("\(user)")
+        let riversRef = storageRef.child("\(addRecipeBrain.getImageName())")
         
         // Upload the file to the path "images/___.jpg"
         let uploadTask = riversRef.putFile(from: localFile, metadata: nil) { metadata, error in
@@ -83,9 +70,8 @@ class AddRecipeViewController: UIViewController {
             // You can also access to download URL after upload.
             riversRef.downloadURL { (url, error) in
                 self.addRecipeBrain.setImageURL(imageURL: url!)
-                print("----> image URL ADD")
-                self.SaveRecipeInFirestore()
-                self.ClearView()
+                self.saveRecipeInFirestore()
+                self.clearView()
                 guard let downloadURL = url else {
                     // Uh-oh, an error occurred!
                     return
@@ -95,86 +81,81 @@ class AddRecipeViewController: UIViewController {
         
     }
     
-    @IBAction func SaveRecipe(_ sender: UIButton) {
-        var saveRercipe = true
+    @IBAction func saveRecipe(_ sender: UIButton) {
+        var saveRecipe = true
         
         if let recipeName = addrecipe_TE_name.text{
             addRecipeBrain.setUserRecipeName(name: recipeName)
         }else{
-            saveRercipe = false
+            saveRecipe = false
             print("Please enter recipe name")
         }
         if let recipeInstructions = addrecipe_LBL_instructions.text{
             addRecipeBrain.setUserRecipeInstructions(instructions: recipeInstructions)
         }else{
-            saveRercipe = false
+            saveRecipe = false
             print("Please enter recipe instructions")
         }
         if let recipeDescription = addrecipe_LBL_description.text{
             addRecipeBrain.setUserRecipeDescription(description: recipeDescription)
         }else{
-            saveRercipe = false
+            saveRecipe = false
             print("Please enter recipe description")
         }
-        if let recipeIngrediencies = addrecipe_TE_ingrediencies.text{
-            addRecipeBrain.setUserRecipeIngrediencies(ingrediencies: recipeIngrediencies)
+        if let recipeIngrediencies = addrecipe_TE_ingredients.text{
+            addRecipeBrain.setUserRecipeIngredients(ingredients: recipeIngrediencies)
         }else{
-            saveRercipe = false
+            saveRecipe = false
             print("Please enter recipe ingrediencies")
         }
         
-        if saveRercipe{
+        if saveRecipe{
             self.addRecipeBrain.setNumberOfLikes(likesNumber: 0)
-            addRecipeBrain.setUserRecipeUserId(userId: user.getUserPhone())
-            
-            UploadImageToStorage()
+            addRecipeBrain.setUserRecipeUserId(userId: addRecipeBrain.getUserPhone())
+            uploadImageToStorage()
         }
     }
     
-    func ClearView(){
+    //clear view after saving
+    func clearView(){
         addrecipe_TE_name.text = nil
         addrecipe_LBL_description.text = nil
-        addrecipe_TE_ingrediencies.text = nil
+        addrecipe_TE_ingredients.text = nil
         addrecipe_LBL_instructions.text = nil
-        
         addrecipe_BTN_addimage.isHidden = false
         addrecipe_IMG_image.isHidden = true
     }
-    func SaveRecipeInFirestore(){
-        //generate uid
+    
+    func saveRecipeInFirestore(){
         let ref = db.collection("recipes")
         let recipeId = ref.document().documentID
         let newRecipe = addRecipeBrain.getRecipe()
         // add recipe to user recipies list
         do {
             try db.collection("recipes").document(recipeId).setData(from: newRecipe)
-            let recipeData = RecipeData.recipeData
-            user.addRecipeIdToList(recipeId: recipeId)
-            recipeData.addRecipeToMap(recipeId, newRecipe)
-            UpdateUserRecipeListFirestore()
+            addRecipeBrain.addNewRecipeIdUserList(recipeId: recipeId)
+            addRecipeBrain.addNewRecipeToMap(recipeId: recipeId, recipe: newRecipe)
+            updateUserRecipeListFirestore()
+            addRecipeBrain.addUserRecipeToMap(recipeId: recipeId, recipe: newRecipe)
         } catch let error {
             print("Error writing city to Firestore: \(error)")
         }
     }
-    func UpdateUserRecipeListFirestore(){
-        let washingtonRef = db.collection("users").document(user.getUserPhone())
-        
-        
-        // Set the "capital" field of the city 'DC'
-        washingtonRef.updateData([
-            "recipes": user.getRecipeList()
+    
+    func updateUserRecipeListFirestore(){
+        let recipeRef = db.collection("users").document(addRecipeBrain.getUserPhone())
+        //update user recipe list in firestore
+        recipeRef.updateData([
+            "recipes": addRecipeBrain.getUserRecipeIdList()
         ]) { err in
             if let err = err {
-                // self.addNewUser()
                 print("Error updating document: \(err)")
             } else {
                 print("Document successfully updated")
             }
         }
-        
     }
-    
-    
+
     @IBAction func UploadPicture(_ sender: UIButton) {
         showImagePickerController()
     }
@@ -205,11 +186,8 @@ extension AddRecipeViewController: UIImagePickerControllerDelegate,UINavigationC
         // Fetch the download URL
         starsRef.downloadURL { url, error in
             if let error = error {
-                // Handle any errors
-                print("--------->Storage ERROR: \(error)")
+                print("Storage error: \(error)")
             } else {
-                // Get the download URL for 'images/stars.jpg'
-                print("----> image URL: \(url!)")
                 self.addRecipeBrain.setImageURL(imageURL: url!)
             }
         }
@@ -224,7 +202,6 @@ extension UIImageView{
                 if let image = UIImage(data:data){
                     DispatchQueue.main.async{
                         self?.image = image
-                        
                     }
                 }
             }

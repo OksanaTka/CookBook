@@ -14,14 +14,9 @@ class User{
     private var userLikedRecipesIdList: [String] = []
     
     var initUser: Bool?
-    //Initializer access level change now
+    
     private init(){}
     
-    func getUser(){
-        //Code Process
-        initUser = true
-        print("Location granted")
-    }
     
     func addRecipeIdToList(recipeId: String){
         userRecipesIdList.append(recipeId)

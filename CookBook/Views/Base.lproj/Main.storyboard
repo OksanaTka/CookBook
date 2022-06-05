@@ -164,10 +164,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aok-GB-ppG">
-                                <rect key="frame" x="10" y="49" width="370" height="391"/>
+                                <rect key="frame" x="10" y="49" width="370" height="390"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6aZ-F2-q1T">
-                                        <rect key="frame" x="0.0" y="178" width="35" height="35"/>
+                                        <rect key="frame" x="0.0" y="177.66666666666666" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="g5h-YG-cuQ"/>
                                             <constraint firstAttribute="height" constant="35" id="p9p-Ls-Rre"/>
@@ -175,17 +175,17 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Button" image="back"/>
                                         <connections>
-                                            <action selector="NavigateBack:" destination="fCi-jO-Bn5" eventType="touchUpInside" id="kiJ-RS-Zw0"/>
+                                            <action selector="navigateBack:" destination="fCi-jO-Bn5" eventType="touchUpInside" id="Wel-Au-QuR"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hK4-Lo-0P9">
-                                        <rect key="frame" x="35" y="172" width="290" height="47"/>
+                                        <rect key="frame" x="35" y="171.66666666666666" width="290" height="47"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="36"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l11-Zn-qt1">
-                                        <rect key="frame" x="325" y="173" width="45" height="45"/>
+                                        <rect key="frame" x="325" y="172.66666666666666" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="by7-jf-Aua"/>
                                             <constraint firstAttribute="width" constant="45" id="xjD-dy-gIg"/>
@@ -194,16 +194,16 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Button" image="Unlike"/>
                                         <connections>
-                                            <action selector="LikeOnClick:" destination="fCi-jO-Bn5" eventType="touchUpInside" id="zYD-dQ-ZC8"/>
+                                            <action selector="likeOnClick:" destination="fCi-jO-Bn5" eventType="touchUpInside" id="VOX-E1-4JM"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="E7X-lP-jx6">
-                                <rect key="frame" x="5" y="595" width="380" height="190"/>
+                                <rect key="frame" x="5" y="594" width="380" height="191"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lI7-4E-PNy">
-                                        <rect key="frame" x="0.0" y="0.0" width="380" height="56.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="380" height="57"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEo-Si-PFP">
                                                 <rect key="frame" x="15" y="10.000000000000002" width="76.333333333333329" height="19.666666666666671"/>
@@ -226,16 +226,16 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgh-yl-zkB">
-                                        <rect key="frame" x="0.0" y="66.666666666666629" width="380" height="56.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="67" width="380" height="57"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingrediencies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fN-Gw-3Dt">
-                                                <rect key="frame" x="15" y="10.000000000000002" width="90" height="19.666666666666671"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fN-Gw-3Dt">
+                                                <rect key="frame" x="15" y="10.000000000000002" width="75" height="19.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                                 <color key="textColor" name="Button Color"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B50-S5-CPH">
-                                                <rect key="frame" x="20.000000000000004" y="34.666666666666742" width="41.333333333333343" height="20.333333333333329"/>
+                                                <rect key="frame" x="20.000000000000004" y="34.666666666666629" width="41.333333333333343" height="20.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -250,7 +250,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6UA-Li-Mkf">
-                                        <rect key="frame" x="0.0" y="133.33333333333337" width="380" height="56.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="134" width="380" height="57"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdJ-Rw-tiX">
                                                 <rect key="frame" x="15" y="10.000000000000002" width="75.333333333333329" height="19.666666666666671"/>
@@ -276,7 +276,7 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="huh-HL-63E">
-                                <rect key="frame" x="40" y="445" width="310" height="130"/>
+                                <rect key="frame" x="40" y="444" width="310" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="QFF-wn-gVn"/>
                                 </constraints>
@@ -302,7 +302,7 @@
                         <outlet property="details_BTN_like" destination="l11-Zn-qt1" id="I4V-fX-pa1"/>
                         <outlet property="details_IMG_image" destination="huh-HL-63E" id="dgT-tS-ggb"/>
                         <outlet property="details_LBL_description" destination="uVP-SJ-rt3" id="tv9-vL-MqY"/>
-                        <outlet property="details_LBL_ingrediencies" destination="B50-S5-CPH" id="lgA-42-drN"/>
+                        <outlet property="details_LBL_ingredients" destination="B50-S5-CPH" id="lgA-42-drN"/>
                         <outlet property="details_LBL_instructions" destination="Msw-rC-Rkx" id="N7O-gd-qH5"/>
                         <outlet property="details_LBL_name" destination="hK4-Lo-0P9" id="Zf7-Ex-eAC"/>
                     </connections>
@@ -396,8 +396,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ks8-b1-sOO">
                                         <rect key="frame" x="0.0" y="229.33333333333334" width="390" height="114.33333333333334"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingrediencies:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHp-7f-7WK">
-                                                <rect key="frame" x="60.000000000000007" y="0.0" width="94.666666666666686" height="19.666666666666668"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHp-7f-7WK">
+                                                <rect key="frame" x="60.000000000000007" y="0.0" width="79.666666666666686" height="19.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -456,7 +456,7 @@
                                                     <color key="baseBackgroundColor" name="Button Color"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="SaveRecipe:" destination="W1L-a8-UOn" eventType="touchUpInside" id="vxj-E5-5CO"/>
+                                                    <action selector="saveRecipe:" destination="W1L-a8-UOn" eventType="touchUpInside" id="vaq-O6-2CO"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -491,14 +491,14 @@
                         <outlet property="addrecipe_IMG_image" destination="Oi2-Ej-IP6" id="EXW-gI-H2v"/>
                         <outlet property="addrecipe_LBL_description" destination="ahf-7M-fsm" id="5yy-4X-x1i"/>
                         <outlet property="addrecipe_LBL_instructions" destination="12Z-NI-Fdk" id="dml-mg-nfX"/>
-                        <outlet property="addrecipe_TE_ingrediencies" destination="n9Q-8d-aYc" id="lTr-JD-9g4"/>
+                        <outlet property="addrecipe_TE_ingredients" destination="n9Q-8d-aYc" id="lTr-JD-9g4"/>
                         <outlet property="addrecipe_TE_name" destination="iAb-4o-i8G" id="8Wj-7y-8yk"/>
                         <outlet property="addrecipe_TE_save" destination="Kdz-90-56R" id="5JU-Cp-chA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HXm-uk-wa0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="165" y="1093.75"/>
+            <point key="canvasLocation" x="164.61538461538461" y="1093.3649289099526"/>
         </scene>
         <!--Recipe Details View Controller-->
         <scene sceneID="Qbc-Mi-JLb">
@@ -535,6 +535,12 @@
                                 <color key="backgroundColor" name="Background Color"/>
                                 <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Recipe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haH-JX-4FB">
+                                <rect key="frame" x="123" y="402.66666666666669" width="144" height="39"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                <color key="textColor" name="Button Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WJC-Pt-8Lp"/>
                         <color key="backgroundColor" name="Background Color"/>
@@ -542,13 +548,19 @@
                             <constraint firstItem="DLf-Ae-vGy" firstAttribute="top" secondItem="WJC-Pt-8Lp" secondAttribute="top" constant="20" id="3fZ-A1-mkr"/>
                             <constraint firstItem="WJC-Pt-8Lp" firstAttribute="bottom" secondItem="HYu-qM-Hfu" secondAttribute="bottom" id="4Jg-Lg-oLe"/>
                             <constraint firstItem="WJC-Pt-8Lp" firstAttribute="trailing" secondItem="DLf-Ae-vGy" secondAttribute="trailing" constant="60" id="7iJ-GN-9um"/>
+                            <constraint firstItem="haH-JX-4FB" firstAttribute="centerX" secondItem="Y2b-Dj-rbI" secondAttribute="centerX" id="9bv-fB-VXq"/>
                             <constraint firstItem="DLf-Ae-vGy" firstAttribute="leading" secondItem="WJC-Pt-8Lp" secondAttribute="leading" constant="60" id="EUD-WB-o13"/>
                             <constraint firstItem="HYu-qM-Hfu" firstAttribute="trailing" secondItem="WJC-Pt-8Lp" secondAttribute="trailing" id="Gkd-Jt-vOC"/>
+                            <constraint firstItem="haH-JX-4FB" firstAttribute="centerY" secondItem="Y2b-Dj-rbI" secondAttribute="centerY" id="d4D-TE-z45"/>
                             <constraint firstItem="HYu-qM-Hfu" firstAttribute="top" secondItem="DLf-Ae-vGy" secondAttribute="bottom" constant="5" id="fYn-Vu-k4p"/>
                             <constraint firstItem="HYu-qM-Hfu" firstAttribute="leading" secondItem="WJC-Pt-8Lp" secondAttribute="leading" id="qXk-ax-0sh"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="My Recipes" image="person.fill" catalog="system" id="Q4C-lq-l7M"/>
+                    <connections>
+                        <outlet property="my_LBL_norecipe" destination="haH-JX-4FB" id="jRh-lc-Zpk"/>
+                        <outlet property="my_TV_table" destination="HYu-qM-Hfu" id="c4M-Ou-cS4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hx-mp-BB5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -567,7 +579,7 @@
             <color red="0.94900000095367432" green="0.94499999284744263" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Button Color">
-            <color red="0.34509804840000002" green="0.74901962280000001" blue="0.45098042490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.3449999988079071" green="0.74900001287460327" blue="0.45100000500679016" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

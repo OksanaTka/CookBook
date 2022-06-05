@@ -18,12 +18,9 @@ class RecipeCell: UITableViewCell {
     @IBOutlet weak var recipe_LBL_likes: UILabel!
     @IBOutlet weak var recipe_LBL_name: UILabel!
     @IBOutlet weak var recipe_IMG_image: UIImageView!
-    
     @IBOutlet weak var recipe_IMG_like: UIImageView!
-    
     @IBOutlet weak var recipe_BTN_detailes: UIButton!
-    var recipe:Recipe?
-    var index: String?
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,8 +28,7 @@ class RecipeCell: UITableViewCell {
         
     }
     
-    
-    @IBAction func ShowRecipeDetails(_ sender: UIButton) {
+    @IBAction func showRecipeDetails(_ sender: UIButton) {
         let indexBTN = sender.tag
         delegate?.didTapButton(index: indexBTN)
     }
@@ -40,8 +36,6 @@ class RecipeCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     

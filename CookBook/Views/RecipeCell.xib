@@ -72,7 +72,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button" image="More"/>
                                 <connections>
-                                    <action selector="ShowRecipeDetails:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="a5K-51-IMs"/>
+                                    <action selector="showRecipeDetails:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="a3t-SD-W1g"/>
                                 </connections>
                             </button>
                         </subviews>

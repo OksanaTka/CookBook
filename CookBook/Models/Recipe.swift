@@ -10,9 +10,8 @@ struct Recipe : Codable{
     var userId: String?
     var name: String?
     var numberOfLikes: Int?
-   // var imageName: String?
     var instructions: String?
-    var ingrediencies: String?
+    var ingredients: String?
     var description: String?
     var imageURL: URL?
 }

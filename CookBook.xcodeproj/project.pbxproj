@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		5A7ACBC12849394900D70562 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A7ACBC02849394900D70562 /* GoogleService-Info.plist */; };
+		5A9C6199284CDD5C00556796 /* MyRecipeBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9C6198284CDD5C00556796 /* MyRecipeBrain.swift */; };
 		8A39B6CE283F8A8200E53FF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39B6CD283F8A8200E53FF2 /* AppDelegate.swift */; };
 		8A39B6D0283F8A8200E53FF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39B6CF283F8A8200E53FF2 /* SceneDelegate.swift */; };
 		8A39B6D2283F8A8200E53FF2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39B6D1283F8A8200E53FF2 /* LoginViewController.swift */; };
 		8A39B6D5283F8A8200E53FF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A39B6D3283F8A8200E53FF2 /* Main.storyboard */; };
 		8A39B6D7283F8A8300E53FF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A39B6D6283F8A8300E53FF2 /* Assets.xcassets */; };
 		8A39B6DA283F8A8300E53FF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A39B6D8283F8A8300E53FF2 /* LaunchScreen.storyboard */; };
-		8A39B6E7283FB0A200E53FF2 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39B6E6283FB0A200E53FF2 /* AuthManager.swift */; };
 		8A39B6E9283FDD5000E53FF2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39B6E8283FDD5000E53FF2 /* HomeViewController.swift */; };
 		8A39B6EB283FE91B00E53FF2 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39B6EA283FE91B00E53FF2 /* Recipe.swift */; };
 		8A39B6ED283FE97800E53FF2 /* HomeBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A39B6EC283FE97800E53FF2 /* HomeBrain.swift */; };
@@ -34,6 +34,7 @@
 		20C82ADF8A15BFEF4E326D63 /* Pods_CookBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CookBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C62C564712F05828F579C8D /* Pods-CookBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBook.release.xcconfig"; path = "Target Support Files/Pods-CookBook/Pods-CookBook.release.xcconfig"; sourceTree = "<group>"; };
 		5A7ACBC02849394900D70562 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5A9C6198284CDD5C00556796 /* MyRecipeBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecipeBrain.swift; sourceTree = "<group>"; };
 		8A39B6CA283F8A8200E53FF2 /* CookBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A39B6CD283F8A8200E53FF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A39B6CF283F8A8200E53FF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,7 +43,6 @@
 		8A39B6D6283F8A8300E53FF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A39B6D9283F8A8300E53FF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A39B6DB283F8A8300E53FF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8A39B6E6283FB0A200E53FF2 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		8A39B6E8283FDD5000E53FF2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8A39B6EA283FE91B00E53FF2 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		8A39B6EC283FE97800E53FF2 /* HomeBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBrain.swift; sourceTree = "<group>"; };
@@ -138,13 +138,13 @@
 		8A39B6E3283F988000E53FF2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8A39B6E6283FB0A200E53FF2 /* AuthManager.swift */,
 				8A39B6EA283FE91B00E53FF2 /* Recipe.swift */,
 				8A39B6EC283FE97800E53FF2 /* HomeBrain.swift */,
 				8A39B6F42840024000E53FF2 /* AddRecipeBrain.swift */,
 				8AB8FD2F28411B5E005CA76B /* User.swift */,
 				8A5DA5C3284222600070409E /* RecipeData.swift */,
 				8AC4C8A7284695F7007BBAD8 /* RecipeDetailsBrain.swift */,
+				5A9C6198284CDD5C00556796 /* MyRecipeBrain.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -280,8 +280,8 @@
 				8A66FD6B284288D300596D66 /* RecipeCell.swift in Sources */,
 				8A5DA5C4284222600070409E /* RecipeData.swift in Sources */,
 				8A39B6ED283FE97800E53FF2 /* HomeBrain.swift in Sources */,
-				8A39B6E7283FB0A200E53FF2 /* AuthManager.swift in Sources */,
 				8AC4C8A8284695F7007BBAD8 /* RecipeDetailsBrain.swift in Sources */,
+				5A9C6199284CDD5C00556796 /* MyRecipeBrain.swift in Sources */,
 				8A39B6EB283FE91B00E53FF2 /* Recipe.swift in Sources */,
 				8A39B6CE283F8A8200E53FF2 /* AppDelegate.swift in Sources */,
 				8A39B6D0283F8A8200E53FF2 /* SceneDelegate.swift in Sources */,

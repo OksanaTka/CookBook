@@ -9,7 +9,7 @@ import Foundation
 class RecipeData {
     static let recipeData = RecipeData()
     private var recipesMap: [String:Recipe] = [:]
-    
+    private var userRecipesMap: [String:Recipe] = [:]
     
     var initRecipe: Bool?
     //Initializer access level change now
@@ -31,5 +31,13 @@ class RecipeData {
     func decreaseLikeFromRecipe(_ recipeId: String){
         let currentValue = (recipesMap[recipeId]?.numberOfLikes)!
         recipesMap[recipeId]?.numberOfLikes = currentValue - 1
+    }
+    
+    func addUserRecipeToMap(_ recipeId: String,_ newRecipe: Recipe){
+        userRecipesMap[recipeId] = newRecipe
+    }
+    
+    func getUserRecipeMap() -> [String:Recipe]{
+        return userRecipesMap
     }
 }
