@@ -8,7 +8,5 @@ target 'CookBook' do
   pod 'FirebaseFirestore'
   pod 'FirebaseAuth'
   pod 'FirebaseStorage'
-  pod 'FirebaseFirestoreSwift'
-  pod 'ProgressKit', '~> 0.7'
-  
+  pod 'FirebaseFirestoreSwift'  
 end
