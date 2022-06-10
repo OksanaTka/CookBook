@@ -8,6 +8,7 @@ import FirebaseStorage
 
 
 
+
 class AddRecipeViewController: UIViewController {
     
     @IBOutlet weak var addrecipe_LBL_description: UITextView!
@@ -17,7 +18,6 @@ class AddRecipeViewController: UIViewController {
     @IBOutlet weak var addrecipe_TE_name: UITextField!
     @IBOutlet weak var addrecipe_IMG_image: UIImageView!
     @IBOutlet weak var addrecipe_TE_save: UIButton!
-
     
     var addRecipeBrain = AddRecipeBrain()
     let db = Firestore.firestore()
@@ -27,7 +27,7 @@ class AddRecipeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initLBLView()
-        
+
         // Get a non-default Cloud Storage bucket
         storage = Storage.storage(url:"gs://cookbook-e4cd0.appspot.com")
     }

@@ -106,6 +106,10 @@ class RecipeDetailsViewController: UIViewController {
         details_LBL_ingredients.text = recipe.ingredients
         details_LBL_description.text = recipe.description
         
+        details_LBL_instructions.clipsToBounds = true
+        details_LBL_ingredients.clipsToBounds = true
+        details_LBL_description.clipsToBounds = true
+        
     }
     
     @IBAction func navigateBack(_ sender: UIButton) {

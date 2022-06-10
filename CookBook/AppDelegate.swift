@@ -10,7 +10,6 @@ import FirebaseCore
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseAuth
-      
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
