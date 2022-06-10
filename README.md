@@ -15,30 +15,26 @@ Simple login with phone number.
   <img src="/images/img_code.png?raw=true" width="250" /> 
 </p>
 
-## All Recipes 
-
+## All Recipes and details
+Recipes of all the users and number of likes. A button for more details. <br />
+User can click on like button.
 <p float="left" align="middle" padding="5">
   <img src="/images/img_allrecipes.png?raw=true" width="250" /> 
-</p>
-
-## Recipe Details
-
-<p float="left" align="middle" padding="5">
-  <img src="/images/img_details.png?raw=true" width="250" /> 
+   <img src="/images/img_details.png?raw=true" width="250" /> 
 
 </p>
+
+
 
 ## My Recipes 
-
-User's recipes
+Recipes saved by the user.
 <p float="left" align="middle" padding="5">
   <img src="/images/img_myrecipe.png?raw=true" width="250" /> 
 
 </p>
 
 ## Add New Recipe
-
-
+Add image and more details about the recipe.
 <p float="left" align="middle" padding="5">
   <img src="/images/img_new.png?raw=true" width="250" /> 
 
