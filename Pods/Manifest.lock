@@ -731,14 +731,12 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (2.1.0)
-  - WaitSpinner (0.1.2)
 
 DEPENDENCIES:
   - FirebaseAuth
   - FirebaseFirestore
   - FirebaseFirestoreSwift
   - FirebaseStorage
-  - WaitSpinner
 
 SPEC REPOS:
   trunk:
@@ -764,7 +762,6 @@ SPEC REPOS:
     - Libuv-gRPC
     - nanopb
     - PromisesObjC
-    - WaitSpinner
 
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
@@ -789,8 +786,7 @@ SPEC CHECKSUMS:
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
-  WaitSpinner: 26ab3ea5aaf5ef78994939f52560565f0f6e2d49
 
-PODFILE CHECKSUM: 4656640ce3de86d14f6dee6800506e273a270ff6
+PODFILE CHECKSUM: 4029440310bfaed72ebeed52ae73d2184242eafc
 
 COCOAPODS: 1.11.3
